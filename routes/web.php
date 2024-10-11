@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ParentsController;
+
+
 use App\Http\Controllers\DashboardsController;
-
-
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactMessageController;
 
@@ -28,5 +29,8 @@ Route::put('/contact-messages/{message}', [ContactMessageController::class, 'mar
     ->name('admin.contact-messages.mark-as-read');
 Route::delete('/contact-messages/{message}', [ContactMessageController::class, 'destroy'])
     ->name('admin.contact-messages.destroy');
+Route::resource('parents', ParentsController::class);
+
+
 Route::get('/admin', [DashboardsController::class, 'index']);
 Route::get('index', [DashboardsController::class, 'index']);

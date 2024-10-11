@@ -21,8 +21,8 @@ class Parents extends Model
         'mother_email',
         'home_address',
     ];
-    // public function students()
-    // {
-    //     return $this->hasMany(Student::class, 'family_id');
-    // }
+    public function students()
+    {
+        return $this->hasMany(Student::class);
+    }
 }

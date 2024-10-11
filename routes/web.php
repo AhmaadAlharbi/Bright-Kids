@@ -7,6 +7,7 @@ use App\Http\Controllers\ParentsController;
 use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactMessageController;
+use App\Http\Controllers\StudentController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -16,8 +17,10 @@ Route::get('/', function () {
 })->name('frontend.index');
 Route::get('/contact-us', function () {
     return view('frontend.contact');
-})->name('frontend.index');
+})->name('frontend.contact');
 Route::resource('appointments', AppointmentController::class);
+Route::resource('parents', ParentsController::class);
+Route::resource('students', StudentController::class);
 Route::put('appointments/{appointment}/status', [AppointmentController::class, 'updateStatus'])->name('appointments.updateStatus');
 Route::post('/contact', [ContactMessageController::class, 'store'])->name('contact.store');
 Route::get('/admin/contact-messages', [ContactMessageController::class, 'index'])->name('admin.contact-messages.index');

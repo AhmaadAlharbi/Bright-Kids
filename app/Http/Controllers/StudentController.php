@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Parents;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Models\StudentDocument;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller
 {
@@ -77,5 +79,36 @@ class StudentController extends Controller
     {
         $student->delete();
         return redirect()->route('students.index')->with('success', 'Student deleted successfully');
+    }
+    public function uploadDocument(Request $request, Student $student)
+    {
+        $request->validate([
+            'document' => 'required|file|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+            'document_type' => 'required|string|max:255',
+        ]);
+
+        if ($request->file('document')->isValid()) {
+            $path = $request->file('document')->store('student_documents', 'public');
+
+            $fullPath = storage_path('app/public/' . $path);
+
+            $document = StudentDocument::create([
+                'student_id' => $student->id,
+                'document_type' => $request->document_type,
+                'file_path' => $path,
+            ]);
+
+            return redirect()->route('students.show', $student)->with('success', "Document uploaded successfully. Path: {$fullPath}, Exists: " . (file_exists($fullPath) ? 'Yes' : 'No'));
+        }
+
+        return back()->with('error', 'Failed to upload document');
+    }
+
+    public function deleteDocument(StudentDocument $document)
+    {
+        Storage::delete($document->file_path);
+        $document->delete();
+
+        return back()->with('success', 'Document deleted successfully');
     }
 }

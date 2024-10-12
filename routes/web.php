@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\RegisterNewStudentsController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -18,6 +19,12 @@ Route::get('/', function () {
 Route::get('/contact-us', function () {
     return view('frontend.contact');
 })->name('frontend.contact');
+Route::get('/register-student', function () {
+    return view('frontend.register-student');
+})->name('frontend.contact');
+
+
+Route::post('/register-new-student', [RegisterNewStudentsController::class, 'store'])->name('register-new-student.store');
 Route::resource('appointments', AppointmentController::class);
 Route::resource('parents', ParentsController::class);
 Route::resource('students', StudentController::class);

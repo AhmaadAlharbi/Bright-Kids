@@ -59,11 +59,11 @@
 @section('content')
 <div class="card shadow">
     <div class="card-header bg-primary text-white">
-        <h5 class="card-title mb-0">Appointments</h5>
+        <h5 class="card-title mb-0">Contact Messages</h5>
     </div>
     <div class="card-body">
         <div class="container mt-4">
-            <h1 class="mb-4 text-primary">Contact Messages</h1>
+
 
             @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">

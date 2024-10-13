@@ -24,7 +24,8 @@
                             <th scope="row">{{ $classroom->id }}</th>
                             <td>{{ $classroom->name }}</td>
                             <td>
-                                <a href="#" class="btn btn-sm btn-outline-info mr-2">
+                                <a href="{{route('classrooms.show',$classroom)}}"
+                                    class="btn btn-sm btn-outline-info mr-2">
                                     <i class="fas fa-eye"></i> View
                                 </a>
                                 <a href="#" class="btn btn-sm btn-outline-primary">

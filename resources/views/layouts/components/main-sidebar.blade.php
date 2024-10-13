@@ -105,15 +105,12 @@
 				<!-- start::Appointemnrs -->
 				<!-- Start::slide -->
 				<!-- start::Appointments -->
+				<!-- Appointments -->
 				<li class="slide has-sub">
 					<a href="javascript:void(0);" class="side-menu__item">
-						<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" fill="none" viewBox="0 0 24 24"
-							stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-								d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-						</svg>
+						<i class="fas fa-calendar-alt side-menu__icon"></i>
 						<span class="side-menu__label">Appointments</span>
-						<i class="fe fe-chevron-right side-menu__angle"></i>
+						<i class="fas fa-chevron-right side-menu__angle"></i>
 					</a>
 					<ul class="slide-menu child1">
 						<li class="slide side-menu__label1">
@@ -124,18 +121,13 @@
 						</li>
 					</ul>
 				</li>
-				<!-- end::Appointments -->
 
-				<!-- start::Messages -->
+				<!-- Messages -->
 				<li class="slide has-sub">
 					<a href="javascript:void(0);" class="side-menu__item">
-						<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" fill="none" viewBox="0 0 24 24"
-							stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-								d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-						</svg>
+						<i class="fas fa-envelope side-menu__icon"></i>
 						<span class="side-menu__label">Messages</span>
-						<i class="fe fe-chevron-right side-menu__angle"></i>
+						<i class="fas fa-chevron-right side-menu__angle"></i>
 					</a>
 					<ul class="slide-menu child1">
 						<li class="slide side-menu__label1">
@@ -147,18 +139,13 @@
 						</li>
 					</ul>
 				</li>
-				<!-- end::Messages -->
 
-				<!-- start::Parents -->
+				<!-- Parents -->
 				<li class="slide has-sub">
 					<a href="javascript:void(0);" class="side-menu__item">
-						<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" fill="none" viewBox="0 0 24 24"
-							stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-								d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-						</svg>
+						<i class="fas fa-users side-menu__icon"></i>
 						<span class="side-menu__label">Parents</span>
-						<i class="fe fe-chevron-right side-menu__angle"></i>
+						<i class="fas fa-chevron-right side-menu__angle"></i>
 					</a>
 					<ul class="slide-menu child1">
 						<li class="slide side-menu__label1">
@@ -169,21 +156,13 @@
 						</li>
 					</ul>
 				</li>
-				<!-- end::Parents -->
 
-				<!-- start::Students -->
+				<!-- Students -->
 				<li class="slide has-sub">
 					<a href="javascript:void(0);" class="side-menu__item">
-						<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" fill="none" viewBox="0 0 24 24"
-							stroke="currentColor">
-							<path d="M12 14l9-5-9-5-9 5 9 5z" />
-							<path
-								d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-								d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-						</svg>
+						<i class="fas fa-user-graduate side-menu__icon"></i>
 						<span class="side-menu__label">Students</span>
-						<i class="fe fe-chevron-right side-menu__angle"></i>
+						<i class="fas fa-chevron-right side-menu__angle"></i>
 					</a>
 					<ul class="slide-menu child1">
 						<li class="slide side-menu__label1">
@@ -194,20 +173,13 @@
 						</li>
 					</ul>
 				</li>
-				<!-- end::Students -->
-				<!-- start::Levels -->
+
+				<!-- Levels -->
 				<li class="slide has-sub">
 					<a href="javascript:void(0);" class="side-menu__item">
-						<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" fill="none" viewBox="0 0 24 24"
-							stroke="currentColor">
-							<path d="M12 14l9-5-9-5-9 5 9 5z" />
-							<path
-								d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-								d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-						</svg>
+						<i class="fas fa-layer-group side-menu__icon"></i>
 						<span class="side-menu__label">Levels</span>
-						<i class="fe fe-chevron-right side-menu__angle"></i>
+						<i class="fas fa-chevron-right side-menu__angle"></i>
 					</a>
 					<ul class="slide-menu child1">
 						<li class="slide side-menu__label1">
@@ -218,20 +190,13 @@
 						</li>
 					</ul>
 				</li>
-				<!-- end::Levels -->
-				<!-- start::classrooms -->
+
+				<!-- Classrooms -->
 				<li class="slide has-sub">
 					<a href="javascript:void(0);" class="side-menu__item">
-						<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" fill="none" viewBox="0 0 24 24"
-							stroke="currentColor">
-							<path d="M12 14l9-5-9-5-9 5 9 5z" />
-							<path
-								d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-								d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-						</svg>
+						<i class="fas fa-chalkboard side-menu__icon"></i>
 						<span class="side-menu__label">Classrooms</span>
-						<i class="fe fe-chevron-right side-menu__angle"></i>
+						<i class="fas fa-chevron-right side-menu__angle"></i>
 					</a>
 					<ul class="slide-menu child1">
 						<li class="slide side-menu__label1">
@@ -242,20 +207,13 @@
 						</li>
 					</ul>
 				</li>
-				<!-- end::classrooms -->
-				<!-- start::teachers -->
+
+				<!-- Teachers -->
 				<li class="slide has-sub">
 					<a href="javascript:void(0);" class="side-menu__item">
-						<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" fill="none" viewBox="0 0 24 24"
-							stroke="currentColor">
-							<path d="M12 14l9-5-9-5-9 5 9 5z" />
-							<path
-								d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-								d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-						</svg>
+						<i class="fas fa-chalkboard-teacher side-menu__icon"></i>
 						<span class="side-menu__label">Teachers</span>
-						<i class="fe fe-chevron-right side-menu__angle"></i>
+						<i class="fas fa-chevron-right side-menu__angle"></i>
 					</a>
 					<ul class="slide-menu child1">
 						<li class="slide side-menu__label1">
@@ -266,7 +224,6 @@
 						</li>
 					</ul>
 				</li>
-				<!-- end::teachers -->
 			</ul>
 			<div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24"
 					height="24" viewBox="0 0 24 24">

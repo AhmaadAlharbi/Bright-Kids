@@ -11,6 +11,7 @@ use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\RegisterNewStudentsController;
+use App\Http\Controllers\TeacherController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -46,7 +47,9 @@ Route::delete('/contact-messages/{message}', [ContactMessageController::class, '
 Route::resource('parents', ParentsController::class);
 Route::resource('levels', LevelController::class);
 Route::resource('classrooms', ClassroomController::class);
-
+Route::resource('teachers', TeacherController::class);
+Route::delete('teachers/{teacher}/classrooms/{classroom}', [TeacherController::class, 'detachClassroom'])
+    ->name('teachers.detach-classroom');
 
 Route::get('/check-file', function () {
     $path = storage_path('app/public/student_documents/mMVvtuWRq3iRfVLaZmh7Lvh7HyKXTsVlbbYATq5e.pdf');

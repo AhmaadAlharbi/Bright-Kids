@@ -40,6 +40,16 @@
                                         <a href="" class="btn btn-sm btn-info">
                                             <i class="fas fa-eye mr-1"></i>View
                                         </a>
+                                        <form
+                                            action="{{ route('teachers.detach-classroom', [$teacher->id, $classroom->id]) }}"
+                                            method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-outline-danger btn-sm"
+                                                onclick="return confirm('Are you sure you want to remove this classroom?')">
+                                                <i class="bi bi-x-circle me-1"></i>Remove
+                                            </button>
+                                        </form>
                                     </td>
                                 </tr>
                                 @endforeach

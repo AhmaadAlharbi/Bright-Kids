@@ -243,6 +243,30 @@
 					</ul>
 				</li>
 				<!-- end::classrooms -->
+				<!-- start::teachers -->
+				<li class="slide has-sub">
+					<a href="javascript:void(0);" class="side-menu__item">
+						<svg xmlns="http://www.w3.org/2000/svg" class="side-menu__icon" fill="none" viewBox="0 0 24 24"
+							stroke="currentColor">
+							<path d="M12 14l9-5-9-5-9 5 9 5z" />
+							<path
+								d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+								d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
+						</svg>
+						<span class="side-menu__label">Teachers</span>
+						<i class="fe fe-chevron-right side-menu__angle"></i>
+					</a>
+					<ul class="slide-menu child1">
+						<li class="slide side-menu__label1">
+							<a href="javascript:void(0);">Menu Levels</a>
+						</li>
+						<li class="slide">
+							<a href="{{route('teachers.index')}}" class="side-menu__item">Show Teachers</a>
+						</li>
+					</ul>
+				</li>
+				<!-- end::teachers -->
 			</ul>
 			<div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24"
 					height="24" viewBox="0 0 24 24">

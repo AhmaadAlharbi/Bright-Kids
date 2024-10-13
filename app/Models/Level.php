@@ -12,6 +12,6 @@ class Level extends Model
 
     public function classrooms()
     {
-        return $this->belongsToMany(Classroom::class);
+        return $this->hasMany(Classroom::class);
     }
 }

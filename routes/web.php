@@ -7,6 +7,7 @@ use App\Http\Controllers\ParentsController;
 use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactMessageController;
+use App\Http\Controllers\LevelController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\RegisterNewStudentsController;
 
@@ -42,6 +43,7 @@ Route::put('/contact-messages/{message}', [ContactMessageController::class, 'mar
 Route::delete('/contact-messages/{message}', [ContactMessageController::class, 'destroy'])
     ->name('admin.contact-messages.destroy');
 Route::resource('parents', ParentsController::class);
+Route::resource('levels', LevelController::class);
 
 Route::get('/check-file', function () {
     $path = storage_path('app/public/student_documents/mMVvtuWRq3iRfVLaZmh7Lvh7HyKXTsVlbbYATq5e.pdf');

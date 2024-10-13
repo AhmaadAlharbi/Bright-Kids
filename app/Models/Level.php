@@ -10,8 +10,8 @@ class Level extends Model
     use HasFactory;
     protected $fillable = ['name', 'email'];
 
-    // public function classrooms()
-    // {
-    //     return $this->belongsToMany(Classroom::class);
-    // }
+    public function classrooms()
+    {
+        return $this->belongsToMany(Classroom::class);
+    }
 }

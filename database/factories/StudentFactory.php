@@ -2,9 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Student;
 use App\Models\Parents;
+use App\Models\Student;
 
+use App\Models\Classroom;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -28,6 +29,7 @@ class StudentFactory extends Factory
             'date_of_birth' => $this->faker->date('Y-m-d', '-5 years'),
             'gender' => $this->faker->randomElement(['Male', 'Female']),
             'grade' => $this->faker->randomElement(['1st', '2nd', '3rd', '4th', '5th', '6th']),
+            'classroom_id' => Classroom::factory(),
             'enrollment_date' => $this->faker->date('Y-m-d', 'now'),
             'profile_picture' => $this->faker->imageUrl(200, 200, 'people'),
             'address' => $this->faker->address,

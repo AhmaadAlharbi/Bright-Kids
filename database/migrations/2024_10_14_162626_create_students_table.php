@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('date_of_birth');
             $table->enum('gender', ['Male', 'Female']);
             $table->string('grade', 20);
+            $table->foreignId('classroom_id')->constrained()->onDelete('cascade');
             $table->date('enrollment_date')->nullable();
             $table->string('profile_picture', 255)->nullable();
             $table->text('address')->nullable();

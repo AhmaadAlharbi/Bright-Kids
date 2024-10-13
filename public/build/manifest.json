@@ -168,13 +168,17 @@
     "isEntry": true
   },
   "resources/assets/js/custom-switcher.js": {
-    "file": "assets/custom-switcher-jKq6lFyx.js",
+    "file": "assets/custom-switcher-BUqZPtkE.js",
     "name": "custom-switcher",
     "src": "resources/assets/js/custom-switcher.js",
-    "isEntry": true
+    "isEntry": true,
+    "imports": [
+      "resources/assets/js/dashboards-charts.js",
+      "resources/assets/js/defaultmenu.js"
+    ]
   },
   "resources/assets/js/dashboards-charts.js": {
-    "file": "assets/dashboards-charts-YMKbg7IQ.js",
+    "file": "assets/dashboards-charts-ux5at47x.js",
     "name": "dashboards-charts",
     "src": "resources/assets/js/dashboards-charts.js",
     "isEntry": true
@@ -192,7 +196,7 @@
     "isEntry": true
   },
   "resources/assets/js/defaultmenu.js": {
-    "file": "assets/defaultmenu-Pld7i3lg.js",
+    "file": "assets/defaultmenu-CQ3XCbya.js",
     "name": "defaultmenu",
     "src": "resources/assets/js/defaultmenu.js",
     "isEntry": true

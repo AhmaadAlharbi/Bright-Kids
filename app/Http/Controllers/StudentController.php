@@ -45,7 +45,19 @@ class StudentController extends Controller
 
     public function show(Student $student)
     {
-        return view('students.show', compact('student'));
+        $totalFees = $student->fees()->sum('total_amount');
+        $paidFees = $student->fees()->sum('paid_amount');
+        $remainingFees = $student->fees()->sum('remaining_amount');
+
+        $paymentPercentage = $totalFees > 0 ? ($paidFees / $totalFees) * 100 : 0;
+
+        $paymentHistory = $student->fees()
+            ->with('feeType')  // Eager load the fee type
+            ->select('id', 'fee_type_id', 'total_amount', 'paid_amount', 'remaining_amount', 'due_date', 'start_date', 'end_date', 'status', 'created_at')
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+        return view('students.show', compact('student', 'totalFees', 'paidFees', 'remainingFees', 'paymentPercentage', 'paymentHistory'));
     }
 
     public function edit(Student $student)

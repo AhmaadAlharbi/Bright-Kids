@@ -197,6 +197,56 @@
             @endif
         </div>
     </div>
+    <div class="card custom-card mb-4">
+        <div class="card-body">
+            <h3 class="mb-3 section-title">Payment History</h3>
+            @if($paymentHistory->isNotEmpty())
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Fee Type</th>
+                            <th>Total Amount</th>
+                            <th>Paid Amount</th>
+                            <th>Remaining</th>
+                            <th>Due Date</th>
+                            <th>Period</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($paymentHistory as $payment)
+                        <tr>
+                            <td>{{ $payment->created_at ? $payment->created_at->format('Y-m-d') : 'N/A' }}</td>
+                            <td>{{ $payment->feeType->name }}</td>
+                            <td>${{ number_format($payment->total_amount, 2) }}</td>
+                            <td>${{ number_format($payment->paid_amount, 2) }}</td>
+                            <td>${{ number_format($payment->remaining_amount, 2) }}</td>
+                            <td>{{ $payment->due_date ? $payment->due_date->format('Y-m-d') : 'N/A' }}</td>
+                            <td>
+                                @if($payment->start_date && $payment->end_date)
+                                {{ $payment->start_date->format('Y-m-d') }} to {{ $payment->end_date->format('Y-m-d') }}
+                                @else
+                                N/A
+                                @endif
+                            </td>
+                            <td>
+                                <span
+                                    class="badge bg-{{ $payment->status === 'paid' ? 'success' : ($payment->status === 'partial' ? 'warning' : 'danger') }}">
+                                    {{ ucfirst($payment->status) }}
+                                </span>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            @else
+            <p>No payment history available for this student.</p>
+            @endif
+        </div>
+    </div>
 </div>
 
 

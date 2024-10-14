@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->boolean('is_recurring')->default(false);
+            $table->decimal('amount', 10, 2); // Ensure 'amount' column exists and is non-nullable
             $table->timestamps();
         });
     }

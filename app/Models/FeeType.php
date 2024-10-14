@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class FeeType extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'description', 'is_recurring'];
+    protected $fillable = ['name', 'description', 'is_recurring', 'amount'];
 
     public function fees()
     {

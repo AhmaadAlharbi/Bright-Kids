@@ -224,6 +224,45 @@
 						</li>
 					</ul>
 				</li>
+				<!-- Fee Types -->
+				<li class="slide has-sub">
+					<a href="javascript:void(0);" class="side-menu__item">
+						<i class="fas fa-file-invoice-dollar side-menu__icon"></i>
+						<span class="side-menu__label">Fee Types</span>
+						<i class="fas fa-chevron-right side-menu__angle"></i>
+					</a>
+					<ul class="slide-menu child1">
+						<li class="slide side-menu__label1">
+							<a href="javascript:void(0);">Fee Types</a>
+						</li>
+						<li class="slide">
+							<a href="{{route('fee-types.index')}}" class="side-menu__item">Manage Fee Types</a>
+						</li>
+						<li class="slide">
+							<a href="{{route('fee-types.create')}}" class="side-menu__item">Create Fee Type</a>
+						</li>
+					</ul>
+				</li>
+
+				<!-- Fees -->
+				<li class="slide has-sub">
+					<a href="javascript:void(0);" class="side-menu__item">
+						<i class="fas fa-money-bill-wave side-menu__icon"></i>
+						<span class="side-menu__label">Fees</span>
+						<i class="fas fa-chevron-right side-menu__angle"></i>
+					</a>
+					<ul class="slide-menu child1">
+						<li class="slide side-menu__label1">
+							<a href="javascript:void(0);">Fees</a>
+						</li>
+						<li class="slide">
+							<a href="{{route('fees.index')}}" class="side-menu__item">Manage Fees</a>
+						</li>
+						<li class="slide">
+							<a href="{{route('fees.create')}}" class="side-menu__item">Create Fee</a>
+						</li>
+					</ul>
+				</li>
 			</ul>
 			<div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24"
 					height="24" viewBox="0 0 24 24">

@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('student_id')->constrained()->onDelete('cascade');
             $table->foreignId('fee_type_id')->constrained('fee_types');
-            $table->date('start_date')->after('due_date')->nullable();
-            $table->date('end_date')->after('start_date')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->decimal('total_amount', 10, 2);
             $table->decimal('paid_amount', 10, 2)->default(0);
             $table->decimal('remaining_amount', 10, 2);

@@ -23,6 +23,7 @@ class FeeTypeFactory extends Factory
             'name' => $this->faker->unique()->word . ' Fee',
             'description' => $this->faker->sentence,
             'is_recurring' => $this->faker->boolean(70), // 70% chance of being recurring
+            'amount' => $this->faker->randomFloat(2, 50, 1000), // Ensure amount is set for each row
         ];
     }
 

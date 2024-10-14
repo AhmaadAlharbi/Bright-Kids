@@ -26,6 +26,7 @@ class Fee extends Model
         'end_date' => 'date',
     ];
 
+
     public function student()
     {
         return $this->belongsTo(Student::class);

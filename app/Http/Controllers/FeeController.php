@@ -3,61 +3,72 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fee;
+use App\Models\FeeType;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class FeeController extends Controller
 {
     public function index()
     {
+
         $fees = Fee::with('student')->get();
+
+
+
         return view('fees.index', compact('fees'));
     }
 
     public function create()
     {
         $students = Student::all();
-        return view('fees.create', compact('students'));
+        $feeTypes = FeeType::all();
+        return view('fees.create', compact('students', 'feeTypes'));
     }
 
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
+        $validated = $request->validate([
             'student_id' => 'required|exists:students,id',
+            'fee_type_id' => 'required|exists:fee_types,id',
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date|after:start_date',
             'total_amount' => 'required|numeric|min:0',
+            'paid_amount' => 'required|numeric|min:0',
             'due_date' => 'required|date',
         ]);
 
-        $fee = new Fee($validatedData);
-        $fee->remaining_amount = $fee->total_amount;
-        $fee->save();
+        $validated['remaining_amount'] = $validated['total_amount'] - $validated['paid_amount'];
+        $validated['status'] = $validated['remaining_amount'] == 0 ? 'paid' : ($validated['paid_amount'] > 0 ? 'partial' : 'unpaid');
 
-        return redirect()->route('fees.index')->with('success', 'Fee added successfully.');
-    }
+        Fee::create($validated);
 
-    public function show(Fee $fee)
-    {
-        return view('fees.show', compact('fee'));
+        return redirect()->route('fees.index')->with('success', 'Fee created successfully.');
     }
 
     public function edit(Fee $fee)
     {
         $students = Student::all();
-        return view('fees.edit', compact('fee', 'students'));
+        $feeTypes = FeeType::all();
+        return view('fees.create', compact('fee', 'students', 'feeTypes'));
     }
 
     public function update(Request $request, Fee $fee)
     {
-        $validatedData = $request->validate([
+        $validated = $request->validate([
             'student_id' => 'required|exists:students,id',
+            'fee_type_id' => 'required|exists:fee_types,id',
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date|after:start_date',
             'total_amount' => 'required|numeric|min:0',
-            'paid_amount' => 'required|numeric|min:0|max:' . $fee->total_amount,
+            'paid_amount' => 'required|numeric|min:0',
             'due_date' => 'required|date',
         ]);
 
-        $fee->update($validatedData);
-        $fee->remaining_amount = $fee->total_amount - $fee->paid_amount;
-        $fee->status = $fee->remaining_amount == 0 ? 'paid' : ($fee->paid_amount > 0 ? 'partial' : 'unpaid');
-        $fee->save();
+        $validated['remaining_amount'] = $validated['total_amount'] - $validated['paid_amount'];
+        $validated['status'] = $validated['remaining_amount'] == 0 ? 'paid' : ($validated['paid_amount'] > 0 ? 'partial' : 'unpaid');
+
+        $fee->update($validated);
 
         return redirect()->route('fees.index')->with('success', 'Fee updated successfully.');
     }
@@ -65,6 +76,7 @@ class FeeController extends Controller
     public function destroy(Fee $fee)
     {
         $fee->delete();
+
         return redirect()->route('fees.index')->with('success', 'Fee deleted successfully.');
     }
 }

@@ -1,17 +1,20 @@
 <?php
 
+use App\Models\FeeType;
+
+
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FeeController;
 use App\Http\Controllers\LevelController;
-
-
+use App\Http\Controllers\FeeTypeController;
 use App\Http\Controllers\ParentsController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\RegisterNewStudentsController;
-use App\Http\Controllers\TeacherController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -48,6 +51,18 @@ Route::resource('parents', ParentsController::class);
 Route::resource('levels', LevelController::class);
 Route::resource('classrooms', ClassroomController::class);
 Route::resource('teachers', TeacherController::class);
+Route::resource('fees', FeeController::class);
+Route::resource('fee-types', FeeTypeController::class);
+Route::get('/fee-types/{id}', function ($id) {
+    $feeType = FeeType::findOrFail($id);
+    return response()->json([
+        'id' => $feeType->id,
+        'name' => $feeType->name,
+        'description' => $feeType->description,
+        'is_recurring' => $feeType->is_recurring,
+        'amount' => $feeType->amount, // Return the amount
+    ]);
+});
 Route::delete('teachers/{teacher}/classrooms/{classroom}', [TeacherController::class, 'detachClassroom'])
     ->name('teachers.detach-classroom');
 

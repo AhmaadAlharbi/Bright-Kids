@@ -2,18 +2,17 @@
 
 namespace Database\Seeders;
 
-use App\Models\Fee;
-use App\Models\Student;
+use App\Models\FeeInvoice;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class FeesTableSeeder extends Seeder
+class FeeInvoiceSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
-    public function run()
+    public function run(): void
     {
-        Fee::factory()->count(10)->create();
+        FeeInvoice::factory()->count(50)->create();
     }
 }

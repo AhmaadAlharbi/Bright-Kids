@@ -12,6 +12,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassroomController;
 use App\Http\Controllers\DashboardsController;
+use App\Http\Controllers\FeeInvoiceController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\RegisterNewStudentsController;
@@ -72,3 +73,9 @@ Route::get('/check-file', function () {
 });
 Route::get('/admin', [DashboardsController::class, 'index']);
 Route::get('index', [DashboardsController::class, 'index']);
+Route::get('/fee-invoices/create', [FeeInvoiceController::class, 'create'])->name('fee_invoices.create');
+Route::post('/fee-invoices', [FeeInvoiceController::class, 'store'])->name('fee_invoices.store');
+Route::get('fee-invoices/create/{student}', [FeeInvoiceController::class, 'create'])->name('fee_invoices.create');
+Route::post('fee-invoices', [FeeInvoiceController::class, 'store'])->name('fee_invoices.store');
+Route::get('student-accounts/create/{student}', [StudentAccountController::class, 'create'])->name('student_accounts.create');
+Route::post('student-accounts', [StudentAccountController::class, 'store'])->name('student_accounts.store');

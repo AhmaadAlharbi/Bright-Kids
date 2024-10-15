@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Parents;
 use App\Models\Student;
+use App\Models\FeeInvoice;
 use Illuminate\Http\Request;
+use App\Models\StudentAccount;
 use App\Models\StudentDocument;
 use Illuminate\Support\Facades\Storage;
 
@@ -45,19 +47,16 @@ class StudentController extends Controller
 
     public function show(Student $student)
     {
-        $totalFees = $student->fees()->sum('total_amount');
-        $paidFees = $student->fees()->sum('paid_amount');
-        $remainingFees = $student->fees()->sum('remaining_amount');
-
-        $paymentPercentage = $totalFees > 0 ? ($paidFees / $totalFees) * 100 : 0;
-
-        $paymentHistory = $student->fees()
-            ->with('feeType')  // Eager load the fee type
-            ->select('id', 'fee_type_id', 'total_amount', 'paid_amount', 'remaining_amount', 'due_date', 'start_date', 'end_date', 'status', 'created_at')
-            ->orderBy('created_at', 'desc')
+        $feeInvoices = FeeInvoice::where('student_id', $student->id)->get();
+        $payments = StudentAccount::where('student_id', $student->id)
+            ->where('type', 'payment')
             ->get();
 
-        return view('students.show', compact('student', 'totalFees', 'paidFees', 'remainingFees', 'paymentPercentage', 'paymentHistory'));
+        $totalFees = $feeInvoices->sum('amount');
+        $totalPaid = $payments->sum('credit');
+        $balance = $totalFees - $totalPaid;
+
+        return view('students.show', compact('student', 'feeInvoices', 'payments', 'totalFees', 'totalPaid', 'balance'));
     }
 
     public function edit(Student $student)

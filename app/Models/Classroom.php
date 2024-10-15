@@ -23,4 +23,8 @@ class Classroom extends Model
     {
         return $this->hasMany(Student::class);
     }
+    public function feeInvoices()
+    {
+        return $this->hasMany(FeeInvoice::class);
+    }
 }

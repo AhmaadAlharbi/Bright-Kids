@@ -27,12 +27,19 @@ class Student extends Model
     {
         return $this->belongsTo(Parents::class);
     }
+
     public function documents()
     {
         return $this->hasMany(StudentDocument::class);
     }
-    public function fees()
+
+    public function studentAccounts()
     {
-        return $this->hasMany(Fee::class);
+        return $this->hasMany(StudentAccount::class);
+    }
+
+    public function feeInvoices()
+    {
+        return $this->hasMany(FeeInvoice::class);
     }
 }

@@ -14,4 +14,8 @@ class Level extends Model
     {
         return $this->hasMany(Classroom::class);
     }
+    public function feeInvoices()
+    {
+        return $this->hasMany(FeeInvoice::class);
+    }
 }

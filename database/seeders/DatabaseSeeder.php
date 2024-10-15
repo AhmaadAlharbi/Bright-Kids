@@ -23,7 +23,10 @@ class DatabaseSeeder extends Seeder
         $this->call(ClassroomSeeder::class);
         $this->call(TeacherSeeder::class);
         $this->call(FeeTypeSeeder::class);
-
         $this->call(FeesTableSeeder::class);
+        $this->call(FeeInvoiceSeeder::class);
+        $this->call(StudentAccountSeeder::class);
+        $this->call(FundAccountSeeder::class);
+        $this->call(ReceiptStudentSeeder::class);
     }
 }

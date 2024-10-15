@@ -2,6 +2,15 @@
 
 @section('content')
 <div class="container">
+    @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
     <h1>Assign Fee to {{ $student->first_name }} {{ $student->last_name }}</h1>
     <form action="{{ route('fee_invoices.store') }}" method="POST">
         @csrf
@@ -21,10 +30,10 @@
             <input type="number" name="amount" id="amount" class="form-control" step="0.01" required>
         </div>
 
-        <div class="form-group">
+        {{-- <div class="form-group">
             <label for="due_date">Due Date</label>
             <input type="date" name="due_date" id="due_date" class="form-control" required>
-        </div>
+        </div> --}}
 
         <div class="form-group">
             <label for="description">Description</label>

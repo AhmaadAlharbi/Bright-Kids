@@ -56,7 +56,12 @@ class StudentController extends Controller
         $totalPaid = $payments->sum('credit');
         $balance = $totalFees - $totalPaid;
 
-        return view('students.show', compact('student', 'feeInvoices', 'payments', 'totalFees', 'totalPaid', 'balance'));
+        // Calculate total paid and remaining balance
+        $totalPaid = $student->studentAccounts()->sum('credit');
+        $totalInvoices = $student->feeInvoices->sum('amount');
+        $remainingBalance = $totalInvoices - $totalPaid;
+
+        return view('students.show', compact('student', 'feeInvoices', 'payments', 'totalFees', 'totalPaid', 'balance', 'totalPaid', 'totalInvoices', 'remainingBalance'));
     }
 
     public function edit(Student $student)

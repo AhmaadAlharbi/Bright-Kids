@@ -50,4 +50,8 @@ class FeeInvoice extends Model
     {
         return $this->hasMany(StudentAccount::class, 'fee_invoice_id'); // Adjust the foreign key if necessary
     }
+    public function payments()
+    {
+        return $this->hasMany(StudentAccount::class, 'fee_invoice_id');
+    }
 }

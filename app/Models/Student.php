@@ -28,6 +28,10 @@ class Student extends Model
         return $this->belongsTo(Parents::class);
     }
 
+    public function classroom()
+    {
+        return $this->belongsTo(Classroom::class);  // Assuming there's a 'classrooms' table
+    }
     public function documents()
     {
         return $this->hasMany(StudentDocument::class);

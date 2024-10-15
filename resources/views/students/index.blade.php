@@ -165,9 +165,12 @@
                                         <i class="fas fa-eye mr-1"></i>View
                                     </a>
                                     <!-- New button for creating fee/payment -->
-                                    <a href="{{ route('fee_invoices.create', ['student_id' => $student->id]) }}"
+                                    <a href="{{ route('fee_invoices.create', ['student' => $student->id]) }}"
                                         class="btn btn-sm btn-success">
-                                        Add Fee/Payment
+                                        Add Fee
+                                    </a><a href="{{ route('student.pay_invoice', ['student' => $student->id]) }}"
+                                        class="btn btn-sm btn-primary">
+                                        Pay Invoice
                                     </a>
                                     <a href="{{ route('students.edit', $student->id) }}"
                                         class="btn btn-sm btn-primary custom-action-btn">

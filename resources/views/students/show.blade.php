@@ -234,7 +234,7 @@
             </tbody>
         </table>
 
-        <h2>Payment History</h2>
+        {{-- <h2>Payment History</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -254,10 +254,66 @@
                 </tr>
                 @endforeach
             </tbody>
-        </table>
+        </table> --}}
 
-        <a href="{{ route('fee_invoices.create', $student->id) }}" class="btn btn-primary">Assign New Fee</a>
-        <a href="{{ route('student_accounts.create', $student->id) }}" class="btn btn-success">Record Payment</a>
+        <div class="container">
+            <h1>Student Details: {{ $student->name }}</h1>
+
+            <h3>Invoices</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Invoice ID</th>
+                        <th>Amount</th>
+                        <th>Invoice Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($student->feeInvoices as $invoice)
+                    <tr>
+                        <td>{{ $invoice->id }}</td>
+                        <td>${{ number_format($invoice->amount, 2) }}</td>
+                        <td>{{ $invoice->invoice_date->format('Y-m-d') }}</td>
+                        <td>
+                            @if($invoice->payments()->sum('credit') >= $invoice->amount)
+                            <span class="text-success">Paid</span>
+                            @else
+                            <span class="text-danger">Pending</span>
+                            @endif
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+            <h3>Payment History</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Amount Paid</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($student->studentAccounts as $payment)
+                    <tr>
+                        <td>{{ $payment->date->format('Y-m-d') }}</td>
+                        <td>${{ number_format($payment->credit, 2) }}</td>
+                        <td>{{ $payment->description }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+            <h3>Summary</h3>
+            <ul>
+                <li>Total Amount of Invoices: ${{ number_format($totalInvoices, 2) }}</li>
+                <li>Total Amount Paid: ${{ number_format($totalPaid, 2) }}</li>
+                <li>Remaining Balance: ${{ number_format($remainingBalance, 2) }}</li>
+            </ul>
+        </div>
     </div>
 
 

@@ -35,7 +35,8 @@
                 <td>{{ $invoice->description }}</td>
                 <td>{{ $invoice->due_date }}</td>
                 <td>
-                    <form action="{{ route('student.pay_invoice', ['student' => $student->id]) }}" method="POST">
+                    <form action="{{ route('student.pay_invoice.process', ['student' => $student->id]) }}"
+                        method="POST">
                         @csrf
                         <input type="hidden" name="invoice_id" value="{{ $invoice->id }}">
                         <input type="number" name="payment_amount" class="form-control" step="0.01" required>

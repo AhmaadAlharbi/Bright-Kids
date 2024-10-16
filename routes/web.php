@@ -17,6 +17,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\StudentAccountController;
 use App\Http\Controllers\RegisterNewStudentsController;
+use App\Http\Controllers\PaymentController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -78,5 +79,7 @@ Route::get('/fee-invoices/create', [FeeInvoiceController::class, 'create'])->nam
 Route::post('/fee-invoices', [FeeInvoiceController::class, 'store'])->name('fee_invoices.store');
 Route::get('fee-invoices/create/{student}', [FeeInvoiceController::class, 'create'])->name('fee_invoices.create');
 Route::post('fee-invoices', [FeeInvoiceController::class, 'store'])->name('fee_invoices.store');
-Route::get('student/{student}/pay-invoice', [StudentAccountController::class, 'payInvoice'])->name('student.pay_invoice');
-Route::post('student/{student}/pay-invoice', [StudentAccountController::class, 'processPayment'])->name('student.pay_invoice');
+Route::get('student/{student}/pay-invoice', [StudentAccountController::class, 'payInvoice'])->name('student.pay_invoice.show');
+Route::post('student/{student}/pay-invoice', [StudentAccountController::class, 'processPayment'])->name('student.pay_invoice.process');
+
+Route::get('/admin/payments', [PaymentController::class, 'index'])->name('admin.payments.index');

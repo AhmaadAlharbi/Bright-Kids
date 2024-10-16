@@ -233,7 +233,7 @@
                 <div class="item">
                     <div class="main-slider-one__item">
                         <div class="main-slider-one__bg"
-                            style="background-image: url(assets/images/backgrounds/slider-1-1.jpg);"></div>
+                            style="background-image: url(assets/images/backgrounds/bg-hero.jpg);"></div>
                         <svg class="main-slider-one__bg-svg" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink">
                             <rect class='circle0 steap' x="5.2%" y="0" rx="0" ry="0" width="100%" height="100%" />
@@ -280,7 +280,7 @@
                 <div class="item">
                     <div class="main-slider-one__item">
                         <div class="main-slider-one__bg"
-                            style="background-image: url(assets/images/backgrounds/slider-1-2.jpg);"></div>
+                            style="background-image: url(assets/images/backgrounds/bg-hero2.jpg);"></div>
                         <svg class="main-slider-one__bg-svg" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink">
                             <rect class='circle0 steap' x="5.2%" y="0" rx="0" ry="0" width="100%" height="100%" />
@@ -1358,7 +1358,8 @@
                         <div class="contact-three__thumb">
                             <div class="contact-three__thumb__main kidearn-tilt"
                                 data-tilt-options='{ "glare": false, "maxGlare": 0, "maxTilt": 3, "speed": 700, "scale": 1 }'>
-                                <img src="assets/images/resources/contact-2-1.jpg" alt="kidearn" /></div>
+                                <img src="assets/images/resources/contact-2-1.jpg" alt="kidearn" />
+                            </div>
                             <div class="contact-three__thumb__shape1 kidearn-splax"
                                 data-para-options='{"orientation": "down", "scale": 1.4, "delay": ".3", "transition": "cubic-bezier(0,0,0,1)", "overflow": true}'>
                                 <img src="assets/images/shapes/contact-2-shape-1.png" alt="kidearn" />

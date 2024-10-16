@@ -57,56 +57,6 @@ class StudentAccountController extends Controller
         // Return a view that shows the outstanding invoices and payment form
         return view('student_accounts.pay_invoice', compact('student', 'outstandingInvoices'));
     }
-    // public function processPayment(Request $request, $student_id)
-    // {
-    //     // Validate the payment request
-    //     $validatedData = $request->validate([
-    //         'invoice_id' => 'required|exists:fee_invoices,id',
-    //         'payment_amount' => 'required|numeric|min:0',
-    //     ]);
-
-    //     // Find the invoice based on the validated invoice_id
-    //     $feeInvoice = FeeInvoice::findOrFail($validatedData['invoice_id']);
-
-    //     // Check if the payment amount exceeds the remaining balance
-    //     $remainingBalance = $feeInvoice->amount - ($feeInvoice->payments()->sum('credit') ?? 0);
-
-    //     if ($validatedData['payment_amount'] > $remainingBalance) {
-    //         return redirect()->back()->with('error', 'Payment exceeds the remaining balance.');
-    //     }
-
-    //     // Logic to process the payment
-    //     $studentAccountData = [
-    //         'date' => now(),
-    //         'type' => 'credit',  // Assuming this is a credit transaction
-    //         'fee_invoice_id' => $feeInvoice->id,
-    //         'student_id' => $student_id,
-    //         'Debit' => null,  // Assuming this is a credit transaction
-    //         'credit' => $validatedData['payment_amount'],  // The amount being paid
-    //         'description' => 'Payment for Invoice ID: ' . $feeInvoice->id,
-    //     ];
-
-    //     // Create the student account entry for the payment
-    //     StudentAccount::create($studentAccountData);
-
-    //     // Generate receipt data
-    //     $receiptData = [
-    //         'date' => now(),
-    //         'student_id' => $student_id,
-    //         'Debit' => null,  // Assuming this is a credit transaction
-    //         'description' => 'Receipt for payment of $' . number_format($validatedData['payment_amount'], 2) . ' for Invoice ID: ' . $feeInvoice->id,
-    //     ];
-
-    //     // Create the receipt entry
-    //     ReceiptStudent::create($receiptData);
-
-
-    //     // Optionally, you could mark the invoice as paid by updating its status
-    //     // $feeInvoice->update(['status' => 'paid']);
-
-    //     return redirect()->route('student.pay_invoice', ['student' => $student_id])
-    //         ->with('success', 'Payment processed successfully! Remaining balance: $' . number_format($remainingBalance - $validatedData['payment_amount'], 2));
-    // }
     public function processPayment(Request $request, $student_id)
     {
         // Validate the payment request
@@ -135,7 +85,7 @@ class StudentAccountController extends Controller
             'student_id' => $student_id,
             'Debit' => null,
             'credit' => $validatedData['payment_amount'],  // Record the payment
-            'description' => 'Payment for Invoice ID: ' . $feeInvoice->id,
+            'description' => 'Payment for Invoice : ' . $feeInvoice->fee->title,
         ];
 
         // Create a new entry in the StudentAccount for this payment
@@ -146,7 +96,7 @@ class StudentAccountController extends Controller
             'date' => now(),
             'student_id' => $student_id,
             'Debit' => null,
-            'description' => 'Receipt for payment of $' . number_format($validatedData['payment_amount'], 2) . ' for Invoice ID: ' . $feeInvoice->id,
+            'description' => 'Receipt for payment of $' . number_format($validatedData['payment_amount'], 2) . ' for Invoice ID: ' . $feeInvoice->fee->title,
         ];
 
         // Create a new receipt for the payment
@@ -170,7 +120,7 @@ class StudentAccountController extends Controller
         }
 
         // Redirect to the student payment page with success message
-        return redirect()->route('student.pay_invoice', ['student' => $student_id])
+        return redirect()->route('students.index', ['student' => $student_id])
             ->with('success', 'Payment processed successfully! Remaining balance: $' . number_format($remainingBalance - $validatedData['payment_amount'], 2));
     }
 }

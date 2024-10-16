@@ -28,8 +28,12 @@ class StudentAccount extends Model
         return $this->belongsTo(Student::class);
     }
 
+    // public function feeInvoice()
+    // {
+    //     return $this->belongsTo(FeeInvoice::class);
+    // }
     public function feeInvoice()
     {
-        return $this->belongsTo(FeeInvoice::class);
+        return $this->belongsTo(FeeInvoice::class, 'fee_invoice_id');
     }
 }

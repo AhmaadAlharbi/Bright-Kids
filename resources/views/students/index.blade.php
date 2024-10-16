@@ -168,7 +168,7 @@
                                     <a href="{{ route('fee_invoices.create', ['student' => $student->id]) }}"
                                         class="btn btn-sm btn-success">
                                         Add Fee
-                                    </a><a href="{{ route('student.pay_invoice', ['student' => $student->id]) }}"
+                                    </a><a href="{{ route('student.pay_invoice.show', ['student' => $student->id]) }}"
                                         class="btn btn-sm btn-primary">
                                         Pay Invoice
                                     </a>

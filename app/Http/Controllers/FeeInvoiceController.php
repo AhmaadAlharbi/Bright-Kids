@@ -44,18 +44,18 @@ class FeeInvoiceController extends Controller
         $feeInvoice = FeeInvoice::create($validatedData);
 
         // After the fee invoice is created, automatically create a student account entry
-        $studentAccountData = [
-            'date'            => now(),  // Use the current date
-            'type'            => 'debit',  // Example: set as debit (can be credit if needed)
-            'fee_invoice_id'  => $feeInvoice->id,
-            'student_id'      => $feeInvoice->student_id,
-            'Debit'           => $feeInvoice->amount,  // The amount is a debit
-            'credit'          => null,  // No credit in this case
-            'description'     => $feeInvoice->description,
-        ];
+        // $studentAccountData = [
+        //     'date'            => now(),  // Use the current date
+        //     'type'            => 'debit',  // Example: set as debit (can be credit if needed)
+        //     'fee_invoice_id'  => $feeInvoice->id,
+        //     'student_id'      => $feeInvoice->student_id,
+        //     'Debit'           => $feeInvoice->amount,  // The amount is a debit
+        //     'credit'          => null,  // No credit in this case
+        //     'description'     => $feeInvoice->description,
+        // ];
 
-        // Create the student account entry
-        StudentAccount::create($studentAccountData);
+        // // Create the student account entry
+        // StudentAccount::create($studentAccountData);
         return redirect()->route('students.show', $validatedData['student_id'])
             ->with('success', 'Fee assigned to student successfully.');
     }

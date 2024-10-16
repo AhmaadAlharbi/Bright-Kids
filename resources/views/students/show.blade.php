@@ -198,121 +198,109 @@
         </div>
     </div>
     <!-- Payment History Section -->
-    <div class="container">
-        <h1>{{ $student->first_name }} {{ $student->last_name }}</h1>
+    <div class="container py-4">
+        <div class="row mb-4">
+            <div class="col">
+                <h1 class="display-4 text-primary">
+                    <i class="fas fa-user-graduate me-3"></i>Student Details: {{ $student->name }}
+                </h1>
+            </div>
+        </div>
 
-        <!-- Student details here -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h3 class="mb-0"><i class="fas fa-file-invoice me-2"></i>Invoices and Payments</h3>
+                    </div>
+                    <div class="card-body">
+                        @foreach($student->feeInvoices as $invoice)
+                        <div class="invoice-group mb-4">
+                            <h4 class="text-primary">Invoice #{{ $invoice->id }}</h4>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Amount</th>
+                                            <th>Invoice Date</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>${{ number_format($invoice->amount, 2) }}</td>
+                                            <td>{{ $invoice->invoice_date->format('Y-m-d') }}</td>
+                                            <td>
+                                                @if($invoice->payments()->sum('credit') >= $invoice->amount)
+                                                <span class="badge bg-success">Paid</span>
+                                                @else
+                                                <span class="badge bg-danger">Pending</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
 
-        <h2>Fee and Payment Summary</h2>
-        <p>Total Fees: ${{ number_format($totalFees, 2) }}</p>
-        <p>Total Paid: ${{ number_format($totalPaid, 2) }}</p>
-        <p>Balance: ${{ number_format($balance, 2) }}</p>
+                            <h5 class="mt-3 mb-2 text-secondary">Payment History</h5>
+                            <div class="table-responsive">
+                                <table class="table table-hover table-sm">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Amount Paid</th>
+                                            <th>Description</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @forelse($invoice->payments as $payment)
+                                        <tr>
+                                            <td>{{ $payment->date->format('Y-m-d') }}</td>
+                                            <td>${{ number_format($payment->credit, 2) }}</td>
+                                            <td>{{ $payment->description }}</td>
+                                        </tr>
+                                        @empty
+                                        <tr>
+                                            <td colspan="3" class="text-center text-muted">No payments recorded for this
+                                                invoice.</td>
+                                        </tr>
+                                        @endforelse
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <h2>Fee Invoices</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Fee</th>
-                    <th>Amount</th>
-                    <th>Due Date</th>
-                    <th>Paid Amount</th>
-                    <th>Balance</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($feeInvoices as $invoice)
-                <tr>
-                    <td>{{ $invoice->fee->title }}</td>
-                    <td>${{ number_format($invoice->amount, 2) }}</td>
-                    <td>{{ $invoice->invoice_date->format('Y-m-d') }}</td>
-                    <td>${{ number_format($invoice->student_accounts->where('type', 'payment')->sum('credit'), 2) }}
-                    </td>
-                    <td>${{ number_format($invoice->amount - $invoice->student_accounts->where('type',
-                        'payment')->sum('credit'), 2) }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-        {{-- <h2>Payment History</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>For Fee</th>
-                    <th>Description</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($payments as $payment)
-                <tr>
-                    <td>{{ $payment->date->format('Y-m-d') }}</td>
-                    <td>${{ number_format($payment->credit, 2) }}</td>
-                    <td>{{ $payment->feeInvoice->fee->title }}</td>
-                    <td>{{ $payment->description }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table> --}}
-
-        <div class="container">
-            <h1>Student Details: {{ $student->name }}</h1>
-
-            <h3>Invoices</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Invoice ID</th>
-                        <th>Amount</th>
-                        <th>Invoice Date</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($student->feeInvoices as $invoice)
-                    <tr>
-                        <td>{{ $invoice->id }}</td>
-                        <td>${{ number_format($invoice->amount, 2) }}</td>
-                        <td>{{ $invoice->invoice_date->format('Y-m-d') }}</td>
-                        <td>
-                            @if($invoice->payments()->sum('credit') >= $invoice->amount)
-                            <span class="text-success">Paid</span>
-                            @else
-                            <span class="text-danger">Pending</span>
-                            @endif
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-
-            <h3>Payment History</h3>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Amount Paid</th>
-                        <th>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach($student->studentAccounts as $payment)
-                    <tr>
-                        <td>{{ $payment->date->format('Y-m-d') }}</td>
-                        <td>${{ number_format($payment->credit, 2) }}</td>
-                        <td>{{ $payment->description }}</td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-
-            <h3>Summary</h3>
-            <ul>
-                <li>Total Amount of Invoices: ${{ number_format($totalInvoices, 2) }}</li>
-                <li>Total Amount Paid: ${{ number_format($totalPaid, 2) }}</li>
-                <li>Remaining Balance: ${{ number_format($remainingBalance, 2) }}</li>
-            </ul>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="mb-0"><i class="fas fa-chart-pie me-2"></i>Summary</h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Total Amount of Invoices
+                                <span class="badge bg-primary rounded-pill">${{ number_format($totalInvoices, 2)
+                                    }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Total Amount Paid
+                                <span class="badge bg-success rounded-pill">${{ number_format($totalPaid, 2) }}</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Remaining Balance
+                                <span class="badge bg-warning rounded-pill">${{ number_format($remainingBalance, 2)
+                                    }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

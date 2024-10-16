@@ -38,8 +38,8 @@
                     <form action="{{ route('student.pay_invoice', ['student' => $student->id]) }}" method="POST">
                         @csrf
                         <input type="hidden" name="invoice_id" value="{{ $invoice->id }}">
-                        <input type="number" name="payment_amount" min="0" max="{{ $invoice->amount }}" value="400"
-                            class="form-control" required>
+                        <input type="number" name="payment_amount" class="form-control" step="0.01" required>
+
                         <button type="submit" class="btn btn-success">Pay Now</button>
                     </form>
                 </td>

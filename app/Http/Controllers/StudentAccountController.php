@@ -112,59 +112,64 @@ class StudentAccountController extends Controller
         // Validate the payment request
         $validatedData = $request->validate([
             'invoice_id' => 'required|exists:fee_invoices,id',
-            'payment_amount' => 'required|numeric|min:0',
+            'payment_amount' => 'required|numeric|min:0.01', // Allow decimals, minimum amount is 0.01
         ]);
 
         // Find the invoice based on the validated invoice_id
         $feeInvoice = FeeInvoice::findOrFail($validatedData['invoice_id']);
 
-        // Check if the payment amount exceeds the remaining balance
-        $remainingBalance = $feeInvoice->amount - ($feeInvoice->payments()->sum('credit') ?? 0);
+        // Calculate the remaining balance on the invoice
+        $totalPayments = $feeInvoice->payments()->sum('credit') ?? 0;
+        $remainingBalance = $feeInvoice->amount - $totalPayments;
 
+        // Ensure the payment doesn't exceed the remaining balance
         if ($validatedData['payment_amount'] > $remainingBalance) {
             return redirect()->back()->with('error', 'Payment exceeds the remaining balance.');
         }
 
-        // Logic to process the payment
+        // Process the payment in the student's account
         $studentAccountData = [
             'date' => now(),
-            'type' => 'credit',  // Assuming this is a credit transaction
+            'type' => 'credit',
             'fee_invoice_id' => $feeInvoice->id,
             'student_id' => $student_id,
-            'Debit' => null,  // Assuming this is a credit transaction
-            'credit' => $validatedData['payment_amount'],  // The amount being paid
+            'Debit' => null,
+            'credit' => $validatedData['payment_amount'],  // Record the payment
             'description' => 'Payment for Invoice ID: ' . $feeInvoice->id,
         ];
 
-        // Create the student account entry for the payment
+        // Create a new entry in the StudentAccount for this payment
         $studentAccount = StudentAccount::create($studentAccountData);
 
-        // Generate receipt data
+        // Generate receipt data for the payment
         $receiptData = [
             'date' => now(),
             'student_id' => $student_id,
-            'Debit' => null,  // Assuming this is a credit transaction
+            'Debit' => null,
             'description' => 'Receipt for payment of $' . number_format($validatedData['payment_amount'], 2) . ' for Invoice ID: ' . $feeInvoice->id,
         ];
 
-        // Create the receipt entry
+        // Create a new receipt for the payment
         $receipt = ReceiptStudent::create($receiptData);
 
-        // Generate fund account entry linked to the receipt
+        // Create a fund account entry associated with the receipt
         $fundAccountData = [
             'date' => now(),
             'receipt_id' => $receipt->id,
-            'Debit' => null,  // Assuming this is a credit transaction
-            'credit' => $validatedData['payment_amount'],  // The amount being credited
+            'Debit' => null,
+            'credit' => $validatedData['payment_amount'],  // Record the fund transaction
             'description' => 'Fund entry for payment of $' . number_format($validatedData['payment_amount'], 2) . ' against Receipt ID: ' . $receipt->id,
         ];
 
         // Create the fund account entry
         FundAccount::create($fundAccountData);
 
-        // Optionally, you could mark the invoice as paid by updating its status
-        // $feeInvoice->update(['status' => 'paid']);
+        // Optionally, mark the invoice as fully paid if the balance is now zero
+        if ($remainingBalance == $validatedData['payment_amount']) {
+            $feeInvoice->update(['status' => 'paid']);
+        }
 
+        // Redirect to the student payment page with success message
         return redirect()->route('student.pay_invoice', ['student' => $student_id])
             ->with('success', 'Payment processed successfully! Remaining balance: $' . number_format($remainingBalance - $validatedData['payment_amount'], 2));
     }

@@ -26,6 +26,7 @@
                             <th>#</th>
                             <th>Name</th>
                             <th>Level</th>
+                            <th>Attendace</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -35,6 +36,11 @@
                             <td>{{ $classroom->id }}</td>
                             <td>{{ $classroom->name }}</td>
                             <td>{{ $classroom->level->name }}</td>
+                            <td>
+                                <a class="btn btn-warning" href="{{ route('attendance.create', $classroom) }}">
+                                    {{ $classroom->name }} - Take Attendance
+                                </a>
+                            </td>
                             <td>
                                 <a href="{{ route('classrooms.show', $classroom->id) }}" class="btn btn-sm btn-info">
                                     <i class="fas fa-eye mr-1"></i>View

@@ -13,6 +13,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassroomController;
+use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\DashboardsController;
 use App\Http\Controllers\FeeInvoiceController;
 use App\Http\Controllers\AppointmentController;
@@ -85,3 +86,12 @@ Route::post('student/{student}/pay-invoice', [StudentAccountController::class, '
 
 Route::get('/admin/payments', [PaymentController::class, 'index'])->name('admin.payments.index');
 Route::get('/invoices/{id}', [InvoiceController::class, 'show'])->name('invoices.show');
+Route::get('/attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+Route::get('/attendance/{classroom}', [AttendanceController::class, 'create'])->name('attendance.create');
+Route::post('/attendance/{classroom}', [AttendanceController::class, 'store'])->name('attendance.store');
+Route::get('/attendance/{classroom}', [AttendanceController::class, 'show'])->name('attendance.show');
+Route::get('/attendance/create/{classroom}', [AttendanceController::class, 'create'])->name('attendance.create');
+Route::put('/classrooms/{classroom}/attendance', [AttendanceController::class, 'update'])->name('attendance.update');
+Route::get('/classrooms/{classroom}/attendance/{date}/edit', [AttendanceController::class, 'edit'])
+    ->name('attendance.edit');
+Route::delete('/classrooms/{classroom}/attendance/{date}', [AttendanceController::class, 'destroy'])->name('attendance.destroy');

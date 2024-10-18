@@ -245,7 +245,7 @@
 				</li> --}}
 
 				<!-- Fees -->
-				<li class="slide has-sub">
+				{{-- <li class="slide has-sub">
 					<a href="javascript:void(0);" class="side-menu__item">
 						<i class="fas fa-money-bill-wave side-menu__icon"></i>
 						<span class="side-menu__label">Fees</span>
@@ -262,9 +262,9 @@
 							<a href="{{route('fees.create')}}" class="side-menu__item">Create Fee</a>
 						</li>
 					</ul>
-				</li>
+				</li> --}}
 				<!-- Fee Types -->
-				<li class="slide has-sub">
+				{{-- <li class="slide has-sub">
 					<a href="javascript:void(0);" class="side-menu__item">
 						<i class="fas fa-file-invoice-dollar side-menu__icon"></i>
 						<span class="side-menu__label">Payments</span>
@@ -279,7 +279,7 @@
 						</li>
 
 					</ul>
-				</li>
+				</li> --}}
 			</ul>
 			<div class="slide-right" id="slide-right"><svg xmlns="http://www.w3.org/2000/svg" fill="#7b8191" width="24"
 					height="24" viewBox="0 0 24 24">

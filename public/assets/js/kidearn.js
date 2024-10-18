@@ -37,9 +37,8 @@
         var el = $(this);
         var percent = el.data("percent");
         $(el).css("width", percent).addClass("counted");
-      },
-      {
-        accY: -50,
+      }, {
+        accY: -50
       }
     );
   }
@@ -55,26 +54,22 @@
         if (!$t.hasClass("counted")) {
           $t.addClass("counted");
           $({
-            countNum: $t.find(".count-text").text(),
-          }).animate(
-            {
-              countNum: n,
+            countNum: $t.find(".count-text").text()
+          }).animate({
+            countNum: n
+          }, {
+            duration: r,
+            easing: "linear",
+            step: function () {
+              $t.find(".count-text").text(Math.floor(this.countNum));
             },
-            {
-              duration: r,
-              easing: "linear",
-              step: function () {
-                $t.find(".count-text").text(Math.floor(this.countNum));
-              },
-              complete: function () {
-                $t.find(".count-text").text(this.countNum);
-              },
+            complete: function () {
+              $t.find(".count-text").text(this.countNum);
             }
-          );
+          });
         }
-      },
-      {
-        accY: 0,
+      }, {
+        accY: 0
       }
     );
   }
@@ -122,34 +117,34 @@
     $(".contact-form-validated").validate({
       // initialize the plugin
       rules: {
-        // name: {
-        //   required: true
-        // },
-        // email: {
-        //   required: true,
-        //   email: true
-        // },
-        // message: {
-        //   required: true
-        // },
-        // subject: {
-        //   required: true
-        // }
+        name: {
+          required: true
+        },
+        email: {
+          required: true,
+          email: true
+        },
+        message: {
+          required: true
+        },
+        subject: {
+          required: true
+        }
       },
       submitHandler: function (form) {
         // sending value with ajax request
-        // $.post(
-        //   $(form).attr("action"),
-        //   $(form).serialize(),
-        //   function (response) {
-        //     $(form).parent().find(".result").append(response);
-        //     $(form).find('input[type="text"]').val("");
-        //     $(form).find('input[type="email"]').val("");
-        //     $(form).find("textarea").val("");
-        //   }
-        // );
-        return true;
-      },
+        $.post(
+          $(form).attr("action"),
+          $(form).serialize(),
+          function (response) {
+            $(form).parent().find(".result").append(response);
+            $(form).find('input[type="text"]').val("");
+            $(form).find('input[type="email"]').val("");
+            $(form).find("textarea").val("");
+          }
+        );
+        return false;
+      }
     });
   }
 
@@ -183,7 +178,7 @@
 
             mcResp.find("p").fadeOut(10000);
           }
-        },
+        }
       });
     });
   }
@@ -195,7 +190,7 @@
       removalDelay: 160,
       preloader: true,
 
-      fixedContentPos: false,
+      fixedContentPos: false
     });
   }
 
@@ -217,8 +212,8 @@
         closeOnContentClick: true,
         closeBtnInside: false,
         gallery: {
-          enabled: true,
-        },
+          enabled: true
+        }
       });
     });
   }
@@ -342,7 +337,7 @@
       boxClass: "wow", // animated element css class (default is wow)
       animateClass: "animated", // animation css class (default is animated)
       mobile: true, // trigger animations on mobile devices (default is true)
-      live: true, // act on asynchronously loaded content (default is true)
+      live: true // act on asynchronously loaded content (default is true)
     });
     wow.init();
   }
@@ -374,6 +369,7 @@
       });
     }
   }
+
 
   if ($("#donate-amount__predefined").length) {
     let donateInput = $("#donate-amount");
@@ -430,8 +426,8 @@
     if ($(this).next().val() > 0) {
       if ($(this).next().val() > 0)
         $(this)
-          .next()
-          .val(+$(this).next().val() - 1);
+        .next()
+        .val(+$(this).next().val() - 1);
     }
   });
 
@@ -475,8 +471,8 @@
       connect: true,
       range: {
         min: 10,
-        max: 200,
-      },
+        max: 200
+      }
     });
 
     var limitFieldMin = document.getElementById("min-value-rangeslider");
@@ -526,9 +522,8 @@
         var target = $(this);
         $("html, body")
           .stop()
-          .animate(
-            {
-              scrollTop: $(target.attr("href")).offset().top - headerH + "px",
+          .animate({
+              scrollTop: $(target.attr("href")).offset().top - headerH + "px"
             },
             900,
             "easeInOutExpo"
@@ -622,7 +617,7 @@
         f = i - s.right,
         styles = {
           "margin-left": 0,
-          "margin-right": 0,
+          "margin-right": 0
         };
       if (Math.round(c) === Math.round(p)) {
         var h = parseFloat($this.css("margin-left") || 0);
@@ -661,7 +656,7 @@
         slide: function (event, ui) {
           $(".price-ranger .ranger-min-max-block .min").val("$" + ui.values[0]);
           $(".price-ranger .ranger-min-max-block .max").val("$" + ui.values[1]);
-        },
+        }
       });
       $(".price-ranger .ranger-min-max-block .min").val(
         "$" + $(".price-ranger #slider-range").slider("values", 0)
@@ -696,14 +691,14 @@
     if ($(".masonry-layout").length) {
       $(".masonry-layout").imagesLoaded(function () {
         $(".masonry-layout").isotope({
-          layoutMode: "masonry",
+          layoutMode: "masonry"
         });
       });
     }
     if ($(".fitRow-layout").length) {
       $(".fitRow-layout").imagesLoaded(function () {
         $(".fitRow-layout").isotope({
-          layoutMode: "fitRows",
+          layoutMode: "fitRows"
         });
       });
     }
@@ -716,8 +711,8 @@
         animationOptions: {
           duration: 500,
           easing: "linear",
-          queue: false,
-        },
+          queue: false
+        }
       });
       // on click filter links
       postFilterList.on("click", function () {
@@ -731,8 +726,8 @@
           animationOptions: {
             duration: 500,
             easing: "linear",
-            queue: false,
-          },
+            queue: false
+          }
         });
         return false;
       });
@@ -755,14 +750,14 @@
     kidearn_cuved_circle();
   });
 
-  let scrollTop = $(".scroll-top path");
+  let scrollTop = $('.scroll-top path');
   if (scrollTop.length) {
     var e = document.querySelector(".scroll-top path"),
       t = e.getTotalLength();
     (e.style.transition = e.style.WebkitTransition = "none"),
-      (e.style.strokeDasharray = t + " " + t),
-      (e.style.strokeDashoffset = t),
-      e.getBoundingClientRect(),
+    (e.style.strokeDasharray = t + " " + t),
+    (e.style.strokeDashoffset = t),
+    e.getBoundingClientRect(),
       (e.style.transition = e.style.WebkitTransition =
         "stroke-dashoffset 10ms linear");
     var o = function () {
@@ -794,6 +789,8 @@
         stricky.removeClass("active");
       }
     }
+
+
   });
 
   $(window).on("resize", function () {

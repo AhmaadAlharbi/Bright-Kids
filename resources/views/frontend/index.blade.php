@@ -766,49 +766,99 @@
                             <!-- /.sec-title__title -->
                         </div>
                         <!-- /.sec-title -->
-                        <form class="contact-one__form contact-form-validated form-one" action="inc/sendemail.php">
-                            <div class="form-one__group">
-                                <div class="form-one__control">
-                                    <input type="text" name="name" placeholder="Your Name" />
+                        <form action="{{ route('appointments.store') }}" method="POST" class="needs-validation"
+                            novalidate>
+                            @csrf
+
+                            <div class="row g-3">
+                                <div class="col-md-4 mb-3">
+                                    <label for="child_name" class="form-label">Child Name</label>
+                                    <input type="text" class="form-control @error('child_name') is-invalid @enderror"
+                                        id="child_name" name="child_name" required>
+                                    @error('child_name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                <!-- /.form-one__control  -->
-                                <div class="form-one__control">
-                                    <input type="email" name="email" placeholder="Email Address" />
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="father_name" class="form-label">Father Name</label>
+                                    <input type="text" class="form-control @error('father_name') is-invalid @enderror"
+                                        id="father_name" name="father_name" required>
+                                    @error('father_name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                <!-- /.form-one__control  -->
-                                <div class="form-one__control">
-                                    <input type="text" name="phone" placeholder="Your Phone" />
+
+                                <div class="col-md-4 mb-3">
+                                    <label for="mother_name" class="form-label">Mother Name</label>
+                                    <input type="text" class="form-control @error('mother_name') is-invalid @enderror"
+                                        id="mother_name" name="mother_name" required>
+                                    @error('mother_name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
-                                <!-- /.form-one__control  -->
-                                <div class="form-one__control">
-                                    <div class="form-one__control__select">
-                                        <label class="sr-only" for="language-select">Select Programs</label>
-                                        <!-- /#language-select.sr-only -->
-                                        <select class="selectpicker" id="language-select">
-                                            <option value="Select programs">Select Programs</option>
-                                            <option value="Select programs 01">
-                                                Select Programs 01
-                                            </option>
-                                            <option value="Select programs 02">
-                                                Select Programs 02
-                                            </option>
-                                        </select>
-                                    </div>
-                                    <!-- /.main-menu__language -->
-                                </div>
-                                <!-- /.form-one__control  -->
-                                <div class="form-one__control form-one__control--full">
-                                    <textarea name="message" placeholder="Write a Message"></textarea><!-- /# -->
-                                </div>
-                                <!-- /.form-one__control -->
-                                <div class="form-one__control form-one__control--full">
-                                    <button type="submit" class="kidearn-btn kidearn-btn--xl">
-                                        <span>Get In Touch</span>
-                                    </button>
-                                </div>
-                                <!-- /.form-one__control -->
                             </div>
-                            <!-- /.form-one__group -->
+
+                            <div class="row g-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="date_of_birth" class="form-label">Date of Birth</label>
+                                    <input type="date" class="form-control @error('dob') is-invalid @enderror"
+                                        id="date_of_birth" name="dob" required>
+                                    @error('dob')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="father_phone" class="form-label">Father's Phone</label>
+                                    <input type="tel" class="form-control @error('father_phone') is-invalid @enderror"
+                                        id="father_phone" name="father_phone" required>
+                                    @error('father_phone')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="mother_phone" class="form-label">Mother's Phone</label>
+                                    <input type="tel" class="form-control @error('mother_phone') is-invalid @enderror"
+                                        id="mother_phone" name="mother_phone" required>
+                                    @error('mother_phone')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="row g-3">
+                                <div class="col-md-6 mb-3">
+                                    <label for="father_workplace" class="form-label">Father's Work</label>
+                                    <input type="text" class="form-control" id="father_workplace"
+                                        name="father_workplace">
+                                </div>
+
+                                <div class="col-md-6 mb-3">
+                                    <label for="mother_workplace" class="form-label">Mother's Work</label>
+                                    <input type="text" class="form-control" id="mother_workplace"
+                                        name="mother_workplace">
+                                </div>
+                            </div>
+
+                            <div class="mb-4">
+                                <label for="branch" class="form-label">Branch</label>
+                                <input type="text" class="form-control @error('branch') is-invalid @enderror"
+                                    id="branch" name="branch" required>
+                                @error('branch')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+                                <a href="{{ route('appointments.index') }}" class="btn btn-secondary me-2">Cancel</a>
+                                <button type="submit" class="btn btn-primary">Create Appointment</button>
+                            </div>
                         </form>
                     </div>
                 </div>

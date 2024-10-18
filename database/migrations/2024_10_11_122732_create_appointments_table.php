@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('mother_workplace'); // Mother's workplace
             $table->string('father_workplace'); // Father's workplace
             $table->string('branch'); // Branch of the school
-            $table->dateTime('visit_date_time'); // Date and time of the visit
+            $table->dateTime('visit_date_time')->nullable(); // Date and time of the visit
             $table->string('status')->default('uncompleted');
             $table->timestamps(); // Created at and updated at timestamps
         });

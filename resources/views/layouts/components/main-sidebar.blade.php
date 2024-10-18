@@ -224,6 +224,22 @@
 						</li>
 					</ul>
 				</li>
+				<li class="slide has-sub">
+					<a href="javascript:void(0);" class="side-menu__item">
+						<i class="fas fa-calendar-check side-menu__icon"></i>
+						<span class="side-menu__label">Attendance</span>
+						<i class="fas fa-chevron-right side-menu__angle"></i>
+					</a>
+					<ul class="slide-menu child1">
+						<li class="slide side-menu__label1">
+							<a href="javascript:void(0);">Attendance Management</a>
+						</li>
+						<li class="slide">
+							<a href="{{route('attendance.index')}}" class="side-menu__item">View Attendance</a>
+						</li>
+
+					</ul>
+				</li>
 				<!-- Fee Types -->
 				{{-- <li class="slide has-sub">
 					<a href="javascript:void(0);" class="side-menu__item">

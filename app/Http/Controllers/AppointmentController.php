@@ -52,7 +52,6 @@ class AppointmentController extends Controller
             'mother_phone' => 'required|string|max:15',
             'father_workplace' => 'required|string|max:255',
             'mother_workplace' => 'required|string|max:255',
-            'visit_date_time' => 'required|date',
             'status' => 'nullable|string|max:255',
             'branch' => 'required|string|max:255', // Add this line
 

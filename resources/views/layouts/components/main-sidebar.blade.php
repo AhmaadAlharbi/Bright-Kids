@@ -225,7 +225,7 @@
 					</ul>
 				</li>
 				<!-- Fee Types -->
-				<li class="slide has-sub">
+				{{-- <li class="slide has-sub">
 					<a href="javascript:void(0);" class="side-menu__item">
 						<i class="fas fa-file-invoice-dollar side-menu__icon"></i>
 						<span class="side-menu__label">Fee Types</span>
@@ -242,7 +242,7 @@
 							<a href="{{route('fee-types.create')}}" class="side-menu__item">Create Fee Type</a>
 						</li>
 					</ul>
-				</li>
+				</li> --}}
 
 				<!-- Fees -->
 				<li class="slide has-sub">
@@ -261,6 +261,23 @@
 						<li class="slide">
 							<a href="{{route('fees.create')}}" class="side-menu__item">Create Fee</a>
 						</li>
+					</ul>
+				</li>
+				<!-- Fee Types -->
+				<li class="slide has-sub">
+					<a href="javascript:void(0);" class="side-menu__item">
+						<i class="fas fa-file-invoice-dollar side-menu__icon"></i>
+						<span class="side-menu__label">Payments</span>
+						<i class="fas fa-chevron-right side-menu__angle"></i>
+					</a>
+					<ul class="slide-menu child1">
+						<li class="slide side-menu__label1">
+							<a href="javascript:void(0);">Payemnts</a>
+						</li>
+						<li class="slide">
+							<a href="{{route('admin.payments.index')}}" class="side-menu__item">Show all payemnts</a>
+						</li>
+
 					</ul>
 				</li>
 			</ul>

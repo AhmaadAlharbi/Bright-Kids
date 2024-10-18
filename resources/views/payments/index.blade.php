@@ -81,6 +81,7 @@
                             <th>Receipt ID</th>
                             <th>Student Name</th>
                             <th>Description</th>
+                            <th>Ivoice</th>
                             <th>Created At</th>
                         </tr>
                     </thead>
@@ -90,6 +91,7 @@
                             <td>{{ $receipt->id }}</td>
                             <td>{{ $receipt->student->first_name }} {{ $receipt->student->lastname }}</td>
                             <td>{{ $receipt->description }}</td>
+                            <td><a href="{{ route('invoices.show', $receipt->id) }}">View Invoice</a></td>
                             <td>{{ $receipt->created_at->format('Y-m-d') }}</td>
                         </tr>
                         @endforeach

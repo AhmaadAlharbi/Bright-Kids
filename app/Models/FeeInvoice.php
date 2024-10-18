@@ -32,6 +32,7 @@ class FeeInvoice extends Model
         return $this->belongsTo(Level::class);
     }
 
+
     public function classroom()
     {
         return $this->belongsTo(Classroom::class);

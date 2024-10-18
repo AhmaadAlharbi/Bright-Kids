@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FeeController;
 use App\Http\Controllers\LevelController;
 use App\Http\Controllers\FeeTypeController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ParentsController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\ClassroomController;
@@ -17,7 +19,6 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ContactMessageController;
 use App\Http\Controllers\StudentAccountController;
 use App\Http\Controllers\RegisterNewStudentsController;
-use App\Http\Controllers\PaymentController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -83,3 +84,4 @@ Route::get('student/{student}/pay-invoice', [StudentAccountController::class, 'p
 Route::post('student/{student}/pay-invoice', [StudentAccountController::class, 'processPayment'])->name('student.pay_invoice.process');
 
 Route::get('/admin/payments', [PaymentController::class, 'index'])->name('admin.payments.index');
+Route::get('/invoices/{id}', [InvoiceController::class, 'show'])->name('invoices.show');
